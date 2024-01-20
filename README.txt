@@ -1,6 +1,12 @@
-Iris Kim
+For this project, I implemented an array-based heap using Java's PriorityQueue interface.
 
-compile:
+The driver reads in any number of files containing polling information: csv files of the format
+SURNAME, FULL NAME, percentage of votes received. The data is stored in Candidate objects, each of
+which contains the name of the candidate, the date of the most recent poll they were a part of, and
+the percentage of votes received in that poll. The Candidate objects are all stored in the array-
+based heap. The driver prints out the heap.
+
+Compile all .java files:
 - ArrayBinaryTree.java
 - ArrayHeap.java
 - BinaryTree.java
@@ -9,25 +15,21 @@ compile:
 - Entry.java
 - PriorityQueue.java
 
-run: java DriverHW06
-- supports use of flags -r and -n, and file names including paths
-- supports entering the -r flag one or more times
-- supports entering flags in either order
+Run: 'java DriverHW06' followed by the file name(s).
+If more than one file name is inputted, the program will read in the first file
+and print out the heap, then read in the next one and print out the updated heap, etc.
+The flag -r will remove/ignore the names of the candidates following it.
+The flag -n will print a list of the top x candidates, where x is the number
+following the flag.
+The flags may be entered in either order. The file name(s) must come last.
+
 examples of acceptable inputs:
 - java DriverHW06 dempres_20190218_1.csv
-- java DriverHW06 -r Biden -r Harris -n 5 polls/dempres_20190218_1.csv
-- java DriverHW06 -n 5 -r Biden Harris Desktop/polls/dempres_20190218_1.csv
+- java DriverHW06 -r Biden -r Harris -n 5 Desktop/dempres_20190218_1.csv
+- java DriverHW06 -n 5 -r Biden Harris dempres_20190218_1.csv dempres_20190220_1.csv dempres_20190317_1.csv
 
-peekTopN has a runtime of O(1) but it uses a lot of memory.
-it works by copying the heap and polling the first N items from the copy,
-leaving the original heap untouched while still utilizing the heap order.
 
 ArrayHeap utilizes an Entry object which has a priority and a value.
 I did this so that I could have 2 compare methods, one which compares on
 the basis of priority (i.e. polling percentage) and one which compares on
 the basis of value (i.e. candidate's last name).
-
-I am aware that the cyclomatic complexity is 12 in my driver.
-I do not know how to fix that.
-
-I spent many many hours on this assignment. I no longer remember how many.
